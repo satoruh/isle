@@ -6,3 +6,7 @@ variable "parent_compartment_ocid" {
 variable "ssh_public_key" {
   type = string
 }
+
+variable "cpe_ip_address" {
+  type = string
+}

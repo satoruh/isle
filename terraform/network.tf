@@ -34,6 +34,13 @@ resource "oci_core_route_table" "internet_gateway" {
     destination_type  = "CIDR_BLOCK"
     network_entity_id = oci_core_internet_gateway.this.id
   }
+
+  route_rules {
+    description       = "traffic via vpn"
+    destination       = "10.0.0.0/8"
+    destination_type  = "CIDR_BLOCK"
+    network_entity_id = oci_core_drg.this.id
+  }
 }
 
 resource "oci_core_route_table" "nat_gateway" {
@@ -52,6 +59,13 @@ resource "oci_core_route_table" "nat_gateway" {
     destination       = data.oci_core_services.all_oci_services.services[0].cidr_block
     destination_type  = "SERVICE_CIDR_BLOCK"
     network_entity_id = oci_core_service_gateway.this.id
+  }
+
+  route_rules {
+    description       = "traffic via vpn"
+    destination       = "10.0.0.0/8"
+    destination_type  = "CIDR_BLOCK"
+    network_entity_id = oci_core_drg.this.id
   }
 }
 
