@@ -17,3 +17,12 @@ patches:
     - op: add
       path: /spec/type
       value: LoadBalancer
+    - op: add
+      path: /metadata/annotations/service.beta.kubernetes.io~1oci-load-balancer-shape
+      value: flexible
+    - op: add
+      path: /metadata/annotations/service.beta.kubernetes.io~1oci-load-balancer-shape-flex-min
+      value: "10"
+    - op: add
+      path: /metadata/annotations/service.beta.kubernetes.io~1oci-load-balancer-shape-flex-max
+      value: "10"
